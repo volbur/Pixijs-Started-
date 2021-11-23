@@ -9,6 +9,7 @@
   <script>
     let app;
     let player;
+    const keys = {};
 
     window.onload = function() {
       app = new PIXI.Application(
@@ -30,12 +31,48 @@
       app.stage.addChild(player);
 
       // mouse interactions
-      app.stage.interactive = true;
-      app.stage.on("pointermove", movePlayer);  
+      // app.stage.interactive = true;
+      // app.stage.on("pointermove", movePlayer);  
+
+      // keyboard event handlers
+      window.addEventListener("keydown", keysDown);
+      window.addEventListener("keyup", keysUp);
+
+      app.ticker.add(gameLoop);
+
+      keysDiv = document.querySelector("#keys");
+    }
+
+    function keysDown(e) {
+      keys[e.keyCode] = true;
+    }
+
+    function keysUp(e) {
+      keys[e.keyCode] = false;
+    }
+
+    function gameLoop() {
+      keysDiv.innerHTML = JSON.stringify(keys);
+
+      // W 
+      if (keys["87"]) {
+        player.y -= 5;
+      }
+      // A
+      if (keys["65"]) {
+        player.x -= 5;
+      }
+      // S
+      if (keys["83"]) {
+        player.y += 5;
+      }
+      // D 
+      if (keys["68"]) {
+        player.x += 5;
+      }
     }
 
     function movePlayer(e) {
-      debugger
       let pos = e.data.global;
 
       player.x = pos.x;
@@ -44,5 +81,6 @@
   </script>
 </head>
 <body>
+  <div id="keys"></div>
 </body>
 </html>
