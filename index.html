@@ -18,6 +18,10 @@
           backgroundColor: 0xaaaaaa,
         });
 
+        document.querySelector("#gameDiv").appendChild(app.view);
+        app.stage.interactive = true;
+        document.querySelector("#gameDiv").addEventListener("pointerdown", fireBullet);
+
         document.body.appendChild(app.view);
 
         // preload assets
@@ -61,6 +65,10 @@
 
         keysDiv = document.querySelector('#keys');
       };
+
+      function fireBullet(e) {
+        console.log("FIRE!");
+      }
 
       function showProgress(e) {
         console.log('e.progress: ', e.progress);
@@ -118,6 +126,8 @@
     </script>
   </head>
   <body>
-    <div id="keys"></div>
+    <div id="gameDiv">
+      <div id="keys"></div>
+    </div>
   </body>
 </html>
