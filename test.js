@@ -1,7 +1,7 @@
 let app, knight, wolf;
 
 class Monster extends PIXI.Sprite {
-  constructor(x = 0, y = 0, texture, name = 'none', hp =  100, speed = 5) {
+  constructor(x = 0, y = 0, texture, name = 'none', hp = 100, speed = 5) {
     super(texture);
     this.anchor.set(0.5);
     this.name = name;
