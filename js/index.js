@@ -69,3 +69,5 @@ function createMonsters() {
   app.stage.addChild(knight);
   app.stage.addChild(wolf);
 }
+
+console.log('PIXI.Sprite********: ', PIXI.Sprite.texture);
