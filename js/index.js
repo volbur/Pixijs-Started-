@@ -11,14 +11,15 @@ window.onload = function () {
   });
 
   document.querySelector('#gameDiv').appendChild(app.view);
-  app.stage.interactive = true;
-//   app.stage.on("pointerdown", fireBullet);
-  document.querySelector("#gameDiv").addEventListener("pointerdown", fireBullet);
 
   player = new PIXI.Sprite.from('images/player.png');
   player.anchor.set(0.5);
   player.x = app.view.width / 2;
   player.y = app.view.height / 2;
+  player.interactive = true;
+  player.buttonMode = true;
+
+  player.on('pointertap', fireBullet);
 
   app.stage.addChild(player);
 
